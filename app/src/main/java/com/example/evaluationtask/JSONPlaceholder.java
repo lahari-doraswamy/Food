@@ -8,8 +8,8 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface JSONPlaceholder {
-    @GET("php")
-    Call<List<Php>> getPhp();
+    @GET("categories.php")
+    Call<Root> getRoot();
 
 
 }

@@ -41,26 +41,26 @@ public class RemoteFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.themealdb.com/api/json/v1/1/categories/")
+                .baseUrl("https://www.themealdb.com/api/json/v1/1/")
                 .addConverterFactory(GsonConverterFactory.create()).
                 build();
         JSONPlaceholder jsonPlaceholder= retrofit.create(JSONPlaceholder.class);
-        Call<List<Php>> call =jsonPlaceholder.getPhp();
-        call.enqueue(new Callback<List<Php>>() {
+        Call<Root> call =jsonPlaceholder.getRoot();
+        call.enqueue(new Callback<Root>() {
             @Override
-            public void onResponse(@NonNull Call<List<Php>> call, @NonNull Response<List<Php>> response) {
+            public void onResponse(@NonNull Call<Root> call, @NonNull Response<Root> response) {
                 if (!response.isSuccessful()){
-                    Toast.makeText(requireContext(), response.code(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(requireContext(), response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                List<Php> phpList  = response.body();
-                PhpAdapter phpAdapter = new PhpAdapter(getContext(),phpList);
+                List<Category> RootList  = response.body().getCategories();
+                PhpAdapter phpAdapter = new PhpAdapter(getContext(),RootList);
                 recyclerView.setAdapter(phpAdapter);
 
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Php>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Root> call, @NonNull Throwable t) {
                 Toast.makeText(requireContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }

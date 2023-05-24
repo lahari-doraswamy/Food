@@ -1,25 +1,29 @@
 package com.example.evaluationtask;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
    public class PhpAdapter extends RecyclerView.Adapter<com.example.evaluationtask.PhpAdapter.PhpViewHolder> {
-        List<Php> phpList;
+
+        List<Category> RootList;
         Context context;
-        public PhpAdapter(Context context,List<Php> php){
+        public PhpAdapter(Context context,List<Category> Root){
             this.context= context;
-            phpList=php;
+            RootList=Root;
 
         }
+
 
         @NonNull
         @Override
@@ -30,26 +34,28 @@ import java.util.List;
 
         @Override
         public void onBindViewHolder(@NonNull PhpViewHolder holder, int position) {
-            Php php = phpList.get(position);
-            holder.strCategory.setText(php.getStrCategory());
-            holder.strCategoryThumb.setText(php.getStrCategoryThumb());
-            holder.strCategoryDescription.setText(php.getStrCategoryDescription());
+            Category root = RootList.get(position);
+            holder.strCategory.setText(root.getStrCategory());
+            Picasso.with(holder.itemView.getContext())
+                    .load(RootList.get(position).getStrCategoryThumb())
+                    .into(holder.strCategoryThumb);
 
         }
+
 
         @Override
         public int getItemCount() {
-            return phpList.size();
+            return RootList.size();
         }
 
         public static class PhpViewHolder extends RecyclerView.ViewHolder{
-            TextView strCategory,strCategoryThumb,strCategoryDescription;
-            @SuppressLint("CutPasteId")
+            TextView strCategory;
+                ImageView strCategoryThumb;
+
             public PhpViewHolder(@NonNull View itemView) {
                 super(itemView);
-                strCategory = itemView.findViewById(R.id.strCategory_tv);
-                strCategoryThumb=itemView.findViewById(R.id.strCategorythumb_tv);
-                strCategoryDescription=itemView.findViewById(R.id.strCategorythumb_tv);
+                strCategory = itemView.findViewById(R.id.strCategory);
+                strCategoryThumb=itemView.findViewById(R.id.strCategoryThumb_tv);
 
             }
         }
