@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/strCategoryThumb_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="220dp"
-        android:layout_marginTop="20dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/strCategory"
-        android:layout_below="@id/strCategoryThumb_tv"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="25dp"/>
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
 
 
+
+        <ImageView
+            android:id="@+id/strCategoryThumb_tv"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+           android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/strCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+           android:layout_toEndOf="@id/strCategoryThumb_tv"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/strCategoryThumb_tv"/>
 
 </RelativeLayout>
