@@ -54,7 +54,7 @@ public class RemoteFragment extends Fragment {
                     return;
                 }
                 List<Category> RootList  = response.body().getCategories();
-                PhpAdapter phpAdapter = new PhpAdapter(getContext(),RootList);
+                PhpAdapter phpAdapter = new PhpAdapter(getContext(),RootList, true);
                 recyclerView.setAdapter(phpAdapter);
 
             }
