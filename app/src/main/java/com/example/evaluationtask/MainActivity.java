@@ -100,7 +100,7 @@ h.postDelayed(new Runnable() {
         startActivity(i);
         finish();
     }
-},3000);
+},5000);
 
     }
 
